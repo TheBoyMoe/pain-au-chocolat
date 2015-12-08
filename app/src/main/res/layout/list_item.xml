@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:padding="@dimen/padding"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/shop_image"
+        android:contentDescription="@string/shop_logo"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="@dimen/app_thumbnail_size"
+        android:layout_height="@dimen/app_thumbnail_size"/>
+
+    <TextView
+        android:id="@+id/shop_details"
+        android:layout_gravity="center_vertical"
+        tools:text="Au Chocolat, 111 Shoreditch Ave, SE1"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

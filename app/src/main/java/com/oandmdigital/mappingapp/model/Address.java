@@ -4,13 +4,13 @@ package com.oandmdigital.mappingapp.model;
 public class Address {
 
     private String mStreet;
-    private String mTown;
+    private String mArea;
     private String mPostalCode;
 
 
-    public Address(String street, String town, String postalCode) {
+    public Address(String street, String area, String postalCode) {
         mStreet = street;
-        mTown = town;
+        mArea = area;
         mPostalCode = postalCode;
     }
 
@@ -19,8 +19,8 @@ public class Address {
         return mStreet;
     }
 
-    public String getTown() {
-        return mTown;
+    public String getArea() {
+        return mArea;
     }
 
     public String getPostalCode() {

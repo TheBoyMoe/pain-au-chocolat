@@ -74,4 +74,8 @@ public class Shop {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format("%s, %s %s", getName(), getAddress().getStreet(), getAddress().getArea());
+    }
 }
