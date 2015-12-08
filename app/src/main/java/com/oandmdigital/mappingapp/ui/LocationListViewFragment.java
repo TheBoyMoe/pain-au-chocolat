@@ -98,7 +98,9 @@ public class LocationListViewFragment extends Fragment{
 
             // populate the holder elements
             Shop item = getItem(position);
-            holder.shopDescription.setText(item.toString());
+            holder.shopName.setText(item.getName());
+            holder.shopStreet.setText(item.getAddress().getStreet());
+            holder.shopRating.setText(String.format("Rating: %.1f", item.getReview()));
 
             // TODO set the imageview
 
@@ -109,11 +111,15 @@ public class LocationListViewFragment extends Fragment{
 
     private class ViewHolder {
         ImageView shopThumbnail;
-        TextView shopDescription;
+        TextView shopName;
+        TextView shopStreet;
+        TextView shopRating;
 
         public ViewHolder(View row) {
             shopThumbnail = (ImageView) row.findViewById(R.id.shop_image);
-            shopDescription = (TextView) row.findViewById(R.id.shop_details);
+            shopName = (TextView) row.findViewById(R.id.shop_name);
+            shopStreet = (TextView) row.findViewById(R.id.shop_street);
+            shopRating = (TextView) row.findViewById(R.id.shop_rating);
         }
     }
 
