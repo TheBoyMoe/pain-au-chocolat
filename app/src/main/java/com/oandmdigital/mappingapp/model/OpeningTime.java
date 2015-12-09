@@ -1,6 +1,9 @@
 package com.oandmdigital.mappingapp.model;
 
-public class OpeningTime {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class OpeningTime implements Parcelable {
 
     private String mDay;
     private double mOpening;
@@ -31,4 +34,35 @@ public class OpeningTime {
     public double getClosing() {
         return mClosing;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.mDay);
+        dest.writeDouble(this.mOpening);
+        dest.writeDouble(this.mClosing);
+        dest.writeString(this.mPeriod);
+    }
+
+    protected OpeningTime(Parcel in) {
+        this.mDay = in.readString();
+        this.mOpening = in.readDouble();
+        this.mClosing = in.readDouble();
+        this.mPeriod = in.readString();
+    }
+
+    public static final Parcelable.Creator<OpeningTime> CREATOR = new Parcelable.Creator<OpeningTime>() {
+        public OpeningTime createFromParcel(Parcel source) {
+            return new OpeningTime(source);
+        }
+
+        public OpeningTime[] newArray(int size) {
+            return new OpeningTime[size];
+        }
+    };
 }

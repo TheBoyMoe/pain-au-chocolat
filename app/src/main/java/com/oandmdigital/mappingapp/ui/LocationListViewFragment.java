@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oandmdigital.mappingapp.R;
+import com.oandmdigital.mappingapp.event.ListOnItemClick;
 import com.oandmdigital.mappingapp.model.Shop;
 import com.oandmdigital.mappingapp.model.ShopData;
 
@@ -21,14 +22,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 public class LocationListViewFragment extends Fragment{
 
-
-
-
-
-    private List<Shop> mItems;
-    private LocationArrayAdapter mAdapter;
 
     public static LocationListViewFragment newInstance() {
         return new LocationListViewFragment();
@@ -41,15 +38,16 @@ public class LocationListViewFragment extends Fragment{
         ListView view = (ListView) inflater.inflate(R.layout.list_view, container, false);
 
         // populate the array adapter with the data set & bind it to the listview
-        mItems = new ArrayList<>(Arrays.asList(ShopData.list));
-        mAdapter = new LocationArrayAdapter(mItems);
-        view.setAdapter(mAdapter);
+        List<Shop> items = new ArrayList<>(Arrays.asList(ShopData.list));
+        LocationArrayAdapter adapter = new LocationArrayAdapter(items);
+        view.setAdapter(adapter);
 
         // TODO setOnItemClickListener - launch the LocationActivity scroll activity
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                // post the selected item to the bus, allowing the activity to deal with click event
+                EventBus.getDefault().post(new ListOnItemClick((Shop) parent.getItemAtPosition(position)));
             }
         });
 
