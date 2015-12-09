@@ -47,7 +47,7 @@ public class LocationListViewFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // post the selected item to the bus, allowing the activity to deal with click event
-                EventBus.getDefault().post(new ListOnItemClick((Shop) parent.getItemAtPosition(position)));
+                EventBus.getDefault().post(new ListOnItemClick((Shop) parent.getItemAtPosition(position), position));
             }
         });
 

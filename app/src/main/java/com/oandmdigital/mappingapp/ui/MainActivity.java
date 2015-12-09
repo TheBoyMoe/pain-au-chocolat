@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public void onEventMainThread(ListOnItemClick event) {
         Intent intent = new Intent(this, LocationDetailActivity.class);
         intent.putExtra(LocationDetailActivity.SHOP_PARCELABLE, event.getShop());
+        intent.putExtra(LocationDetailActivity.ITEM_POSITION, event.getPosition());
         startActivity(intent);
     }
 
