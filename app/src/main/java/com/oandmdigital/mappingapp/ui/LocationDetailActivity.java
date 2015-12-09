@@ -1,6 +1,8 @@
 package com.oandmdigital.mappingapp.ui;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,12 @@ import android.widget.ImageView;
 import com.oandmdigital.mappingapp.R;
 import com.oandmdigital.mappingapp.model.Shop;
 import com.oandmdigital.mappingapp.model.ShopData;
+
+/**
+ * References
+ * [1] http://stackoverflow.com/questions/31662416/show-collapsingtoolbarlayout-title-only-when-collapsed
+ *
+ */
 
 public class LocationDetailActivity extends AppCompatActivity {
 
@@ -23,18 +31,8 @@ public class LocationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
         // fetch the shop object
-        Shop shop = getIntent().getParcelableExtra(SHOP_PARCELABLE);
+        final Shop shop = getIntent().getParcelableExtra(SHOP_PARCELABLE);
         int position = getIntent().getIntExtra(ITEM_POSITION, 0);
-
-        // set the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // set the toolbar's title
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(shop.getName());
-        }
-
 
 
         // TODO use Glide/Picasso to load image
@@ -56,8 +54,40 @@ public class LocationDetailActivity extends AppCompatActivity {
             }
         });
 
-        if(getSupportActionBar() != null)
+
+
+        // set the toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // show the toolbar's title when fully collapsed
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.setTitle(shop.getName());
+                    isShow = true;
+                } else if(isShow) {
+                    collapsingToolbarLayout.setTitle("");
+                    isShow = false;
+                }
+            }
+        });
+
     }
 
 

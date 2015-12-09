@@ -46,7 +46,7 @@ public class ShopData {
 
     public static Shop[] list = {
             new Shop("Pierre Marcolini", new Address("37 Marylebone High St", "Marylebone", "W1U"), mOpeningTimes, "https://eu.marcolini.com", "1111111111", "", 5.0, 51.520721, -0.151676),
-            new Shop("Master Brothers", new Address("19-29 Redchurch St", "Shoreditch", "E2 7DJ"), mOpeningTimes, "http://mastbrothers.co.uk/pages/home", "020 7739 1236", "", 4.4, 51.5243849, -0.0775549),
+            new Shop("Mast Brothers", new Address("19-29 Redchurch St", "Shoreditch", "E2 7DJ"), mOpeningTimes, "http://mastbrothers.co.uk/pages/home", "020 7739 1236", "", 4.4, 51.5243849, -0.0775549),
             new Shop("Melt", new Address("59 Ledbury Road", "Notting Hill", "W11 2AA"), mOpeningTimes, "http://www.meltchocolates.com", "020 7727 5030", "", 4.7, 51.5141542, -0.201449),
             new Shop("Paul A Young Fine Chocolates", new Address("143 Wardour Street", "Soho", "W1F 8WA"), mOpeningTimes, "http://www.paulayoung.co.uk", "020 7437 0011", "", 4.6, 51.5141558, -0.1367509),
             new Shop("La Maison Du Chocolat", new Address("46 Piccadilly", "Mayfair", "W1J 0DS"), mOpeningTimes, "http://www.lamaisonduchocolat.co.uk/uk/en/", "020 7287 8500", "", 4.6, 51.508781, -0.1403988),
