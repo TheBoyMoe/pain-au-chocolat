@@ -1,5 +1,7 @@
 package com.oandmdigital.mappingapp.model;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.List;
 
 public class Shop {
@@ -10,7 +12,7 @@ public class Shop {
     private String mUrl;
     private String mTelephone;
     private String mImageUrl;
-    private double mReview;
+    private double mRating;
     private double mLongitude;
     private double mLatitude;
 
@@ -21,7 +23,7 @@ public class Shop {
                 String url,
                 String telephone,
                 String imageUrl,
-                double review,
+                double rating,
                 double longitude,
                 double latitude) {
 
@@ -31,7 +33,7 @@ public class Shop {
         mUrl = url;
         mTelephone = telephone;
         mImageUrl = imageUrl;
-        mReview = review;
+        mRating = rating;
         mLongitude = longitude;
         mLatitude = latitude;
     }
@@ -61,8 +63,8 @@ public class Shop {
         return mImageUrl;
     }
 
-    public double getReview() {
-        return mReview;
+    public double getRating() {
+        return mRating;
     }
 
     public double getLongitude() {
