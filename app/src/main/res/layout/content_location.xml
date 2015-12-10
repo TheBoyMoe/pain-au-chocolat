@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <!-- Location Title -->
         <LinearLayout
             android:orientation="horizontal"
             android:paddingLeft="@dimen/dimen_large"
@@ -50,11 +52,149 @@
         </LinearLayout>
 
 
-        <TextView
-            android:padding="@dimen/dimen_large"
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_normal"
+            android:paddingLeft="@dimen/dimen_large"
+            android:paddingStart="@dimen/dimen_large"
+            android:paddingRight="@dimen/dimen_large"
+            android:paddingEnd="@dimen/dimen_large"
+            android:paddingBottom="@dimen/dimen_normal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/large_text"/>
+            android:layout_height="wrap_content">
+
+
+            <!-- Location Address -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/ic_action_location"
+                    android:contentDescription="@string/location_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/location_street"
+                        android:singleLine="true"
+                        tools:text="11 Borough High Street, Borough"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                    <TextView
+                        android:id="@+id/location_postal_code"
+                        android:singleLine="true"
+                        tools:text="SE1 2BH"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- Location Phone -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_action_call"
+                    android:contentDescription="@string/phone_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/location_telephone"
+                    tools:text="020 7526 8965"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </LinearLayout>
+
+            <!-- Location Url -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_action_website"
+                    android:contentDescription="@string/url_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/location_url"
+                    tools:text="http://panduchocolat.com"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+            <!-- Location opening times-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_action_times"
+                    android:contentDescription="@string/opening_times_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/location_opening_times"
+                    tools:text="Opening times:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <!-- Location Rating-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/app_icon_size"
+                android:paddingStart="@dimen/app_icon_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--<ImageView-->
+                    <!--android:src="@drawable/ic_full_star"-->
+                    <!--android:contentDescription="@string/rating_icon"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"/>-->
+
+                <TextView
+                    android:id="@+id/location_rating"
+                    android:gravity="start"
+                    tools:text="Rating:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
