@@ -1,5 +1,6 @@
 package com.oandmdigital.mappingapp.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,7 +8,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +23,7 @@ import com.oandmdigital.mappingapp.model.ShopData;
  * [2] http://blog.grafixartist.com/add-a-toolbar-elevation-on-pre-lollipop/
  */
 
-public class LocationDetailActivity extends AppCompatActivity {
+public class LocationDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String SHOP_PARCELABLE = "shop";
     public static final String ITEM_POSITION = "position";
@@ -53,47 +53,24 @@ public class LocationDetailActivity extends AppCompatActivity {
         locationTitle.setText(location.getName());
 
         // content detail
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         TextView locationAddress = (TextView) findViewById(R.id.location_address);
         TextView locationTelephone = (TextView) findViewById(R.id.location_telephone);
+        locationTelephone.setOnClickListener(this);
         TextView locationUrl = (TextView) findViewById(R.id.location_url);
+        locationUrl.setOnClickListener(this);
         TextView locationOpeningTimes = (TextView) findViewById(R.id.location_opening_times);
+        locationOpeningTimes.setOnClickListener(this);
         TextView locationRating = (TextView) findViewById(R.id.location_rating);
         TextView locationDistance = (TextView) findViewById(R.id.location_distance);
 
+        fab.setOnClickListener(this);
         locationAddress.setText(String.format("%s, %s, %s",
                 location.getAddress().getStreet(), location.getAddress().getArea(), location.getAddress().getPostalCode()));
         locationTelephone.setText(location.getTelephone());
         locationUrl.setText(location.getUrl());
         locationDistance.setText(String.format("Distance: %s %s", String.valueOf(location.getDistance()), " miles"));
         locationRating.setText(String.format("Rating: %.1f", location.getRating()));
-
-        // TODO open drop down displaying opening times
-        locationOpeningTimes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LocationDetailActivity.this, "Display opening times", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // TODO add link to phone
-
-
-        // TODO add link to url
-
-
-        // TODO display star ratings
-
-
-        // TODO launch Google Navigation from the FAB
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 
 
         // set the toolbar
@@ -133,6 +110,23 @@ public class LocationDetailActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
 
+        switch (view.getId()) {
+            case R.id.fab:
+                Snackbar.make(view, "Launch Google maps", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                break;
+            case R.id.location_opening_times:
+                Snackbar.make(view, "Open opening times drop down", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                break;
+            case R.id.location_telephone:
+                Snackbar.make(view, "Dial the phone number", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                break;
+            case R.id.location_url:
+                Snackbar.make(view, "Open the link in the browser", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                break;
+        }
 
+    }
 }
