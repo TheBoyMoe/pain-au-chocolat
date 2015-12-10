@@ -16,6 +16,7 @@ public class Shop implements Parcelable {
     private double mRating;
     private double mLongitude;
     private double mLatitude;
+    private double mDistance;
 
 
     public Shop(String name,
@@ -26,7 +27,8 @@ public class Shop implements Parcelable {
                 String imageUrl,
                 double rating,
                 double longitude,
-                double latitude) {
+                double latitude,
+                double distance) {
 
         mName = name;
         mAddress = address;
@@ -37,6 +39,7 @@ public class Shop implements Parcelable {
         mRating = rating;
         mLongitude = longitude;
         mLatitude = latitude;
+        mDistance = distance;
     }
 
 
@@ -76,6 +79,11 @@ public class Shop implements Parcelable {
         return mLatitude;
     }
 
+    public double getDistance() {
+        return mDistance;
+    }
+
+
     @Override
     public String toString() {
         return String.format("%s, %s %s", getName(), getAddress().getStreet(), getAddress().getArea());
@@ -98,6 +106,7 @@ public class Shop implements Parcelable {
         dest.writeDouble(this.mRating);
         dest.writeDouble(this.mLongitude);
         dest.writeDouble(this.mLatitude);
+        dest.writeDouble(this.mDistance);
     }
 
     protected Shop(Parcel in) {
@@ -110,6 +119,7 @@ public class Shop implements Parcelable {
         this.mRating = in.readDouble();
         this.mLongitude = in.readDouble();
         this.mLatitude = in.readDouble();
+        this.mDistance = in.readDouble();
     }
 
     public static final Parcelable.Creator<Shop> CREATOR = new Parcelable.Creator<Shop>() {
@@ -121,6 +131,4 @@ public class Shop implements Parcelable {
             return new Shop[size];
         }
     };
-
-
 }

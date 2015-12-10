@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oandmdigital.mappingapp.R;
 import com.oandmdigital.mappingapp.event.ListOnItemClick;
@@ -75,12 +74,13 @@ public class LocationListViewFragment extends Fragment{
 
             // populate the holder elements
             Shop item = getItem(position);
-            holder.shopName.setText(item.getName());
-            holder.shopStreet.setText(item.getAddress().getStreet());
-            holder.shopRating.setText(String.format("Rating: %.1f", item.getRating()));
+            holder.locationName.setText(item.getName());
+            holder.locationDistance.setText(String.format("%s miles", String.valueOf(item.getDistance())));
+            holder.locationStreet.setText(item.getAddress().getStreet());
+            holder.locationRating.setText(String.format("Rating: %.1f", item.getRating()));
 
             // set the imageview
-            holder.shopThumbnail.setImageResource(ShopData.getImageDrawable(position));
+            holder.locationThumbnail.setImageResource(ShopData.getImageDrawable(position));
 
             return convertView;
         }
@@ -88,16 +88,18 @@ public class LocationListViewFragment extends Fragment{
 
 
     private class ViewHolder {
-        ImageView shopThumbnail;
-        TextView shopName;
-        TextView shopStreet;
-        TextView shopRating;
+        ImageView locationThumbnail;
+        TextView locationName;
+        TextView locationDistance;
+        TextView locationStreet;
+        TextView locationRating;
 
         public ViewHolder(View row) {
-            shopThumbnail = (ImageView) row.findViewById(R.id.shop_image);
-            shopName = (TextView) row.findViewById(R.id.shop_name);
-            shopStreet = (TextView) row.findViewById(R.id.shop_street);
-            shopRating = (TextView) row.findViewById(R.id.shop_rating);
+            locationThumbnail = (ImageView) row.findViewById(R.id.shop_image);
+            locationName = (TextView) row.findViewById(R.id.location_name);
+            locationDistance = (TextView) row.findViewById(R.id.location_distance);
+            locationStreet = (TextView) row.findViewById(R.id.location_street);
+            locationRating = (TextView) row.findViewById(R.id.location_rating);
         }
     }
 

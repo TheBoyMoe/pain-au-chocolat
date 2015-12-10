@@ -7,8 +7,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.oandmdigital.mappingapp.R;
 import com.oandmdigital.mappingapp.model.Shop;
@@ -31,8 +33,10 @@ public class LocationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
         // fetch the shop object
-        final Shop shop = getIntent().getParcelableExtra(SHOP_PARCELABLE);
+        final Shop location = getIntent().getParcelableExtra(SHOP_PARCELABLE);
         int position = getIntent().getIntExtra(ITEM_POSITION, 0);
+
+
 
 
         // TODO use Glide/Picasso to load image
@@ -42,6 +46,10 @@ public class LocationDetailActivity extends AppCompatActivity {
 
 
         // TODO load the shop details
+        final TextView locationTitle = (TextView) findViewById(R.id.location_title);
+        final TextView locationDistance = (TextView) findViewById(R.id.location_distance);
+        locationTitle.setText(location.getName());
+        locationDistance.setText(String.format("%s %s", String.valueOf(location.getDistance()), "mi"));
 
 
         // TODO launch Google Navigation from the FAB
@@ -79,10 +87,14 @@ public class LocationDetailActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(shop.getName());
+                    collapsingToolbarLayout.setTitle(location.getName());
+                    locationTitle.setText("");
+                    locationDistance.setText("");
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle("");
+                    locationTitle.setText(location.getName());
+                    locationDistance.setText(String.format("%s %s", String.valueOf(location.getDistance()), "mi"));
                     isShow = false;
                 }
             }
