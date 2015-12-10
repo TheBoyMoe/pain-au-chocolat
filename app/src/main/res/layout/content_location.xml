@@ -17,39 +17,22 @@
 
 
         <!-- Location Title -->
-        <LinearLayout
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/location_title"
+            android:paddingTop="@dimen/dimen_normal"
             android:paddingLeft="@dimen/dimen_large"
             android:paddingStart="@dimen/dimen_large"
-            android:paddingRight="@dimen/dimen_large"
             android:paddingEnd="@dimen/dimen_large"
-            android:paddingTop="@dimen/dimen_large"
+            android:paddingRight="@dimen/dimen_large"
             android:paddingBottom="@dimen/dimen_normal"
-            android:layout_width="match_parent"
             android:background="@color/colorPrimary"
-            android:layout_height="wrap_content">
+            tools:text="Pain au Chocolat"
+            android:textColor="@color/colorTextSecondary"
+            android:singleLine="true"
+            android:textSize="22sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/location_title"
-                tools:text="Pain au Chocolat"
-                android:textColor="@color/colorTextSecondary"
-                android:singleLine="true"
-                android:textSize="22sp"
-                android:layout_weight="4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-
-
-            <!--<TextView-->
-                <!--android:id="@+id/location_distance"-->
-                <!--android:gravity="end"-->
-                <!--android:textColor="@color/colorTextSecondary"-->
-                <!--tools:text="0.2mi"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"/>-->
-
-        </LinearLayout>
 
         <!-- toolbar drop shadow-->
         <View
@@ -72,154 +55,85 @@
 
 
             <!-- Location Address -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_action_location"
-                    android:contentDescription="@string/location_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:id="@+id/location_address"
-                        android:singleLine="true"
-                        tools:text="11 Borough High Street, Borough"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-
-                    <TextView
-                        android:id="@+id/location_postal_code"
-                        android:singleLine="true"
-                        tools:text="SE1 2BH"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <!-- Location Phone -->
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/location_address"
+                android:paddingBottom="@dimen/dimen_normal"
+                android:singleLine="true"
+                tools:text="11 Borough High Street, Borough, SE1"
                 android:gravity="center_vertical"
+                android:drawableLeft="@drawable/ic_action_location"
+                android:drawableStart="@drawable/ic_action_location"
+                android:drawablePadding="@dimen/dimen_normal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_action_call"
-                    android:contentDescription="@string/phone_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/location_telephone"
-                    tools:text="020 7526 8965"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"/>
 
 
-
-            </LinearLayout>
+            <!-- Location telephone -->
+            <TextView
+                android:id="@+id/location_telephone"
+                android:paddingBottom="@dimen/dimen_normal"
+                tools:text="020 7526 8965"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/ic_action_phone"
+                android:drawableStart="@drawable/ic_action_phone"
+                android:drawablePadding="@dimen/dimen_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
             <!-- Location Url -->
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/location_url"
+                android:paddingBottom="@dimen/dimen_normal"
+                tools:text="http://panduchocolat.com"
+                android:singleLine="true"
                 android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_action_website"
-                    android:contentDescription="@string/url_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/location_url"
-                    tools:text="http://panduchocolat.com"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
+                android:drawableLeft="@drawable/ic_action_url"
+                android:drawableStart="@drawable/ic_action_url"
+                android:drawablePadding="@dimen/dimen_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
             <!-- Location distance -->
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/location_distance"
+                android:paddingBottom="@dimen/dimen_normal"
+                tools:text="Distance: 0.2 miles"
+                android:singleLine="true"
                 android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_action_website"
-                    android:contentDescription="@string/location_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/location_distance"
-                    tools:text="Distance: 0.2 miles"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
+                android:drawableLeft="@drawable/ic_action_walk"
+                android:drawableStart="@drawable/ic_action_walk"
+                android:drawablePadding="@dimen/dimen_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <!-- Location opening times-->
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/location_opening_times"
+                android:paddingBottom="@dimen/dimen_normal"
+                android:text="@string/opening_times"
                 android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_action_times"
-                    android:contentDescription="@string/opening_times_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/location_opening_times"
-                    android:text="@string/opening_times"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
+                android:drawableLeft="@drawable/ic_action_opening_times"
+                android:drawableStart="@drawable/ic_action_opening_times"
+                android:drawableRight="@drawable/ic_action_drop_down"
+                android:drawableEnd="@drawable/ic_action_drop_down"
+                android:drawablePadding="@dimen/dimen_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
             <!-- Location Rating-->
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/location_rating"
                 android:gravity="center_vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_full_star"
-                    android:contentDescription="@string/rating_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/location_rating"
-                    android:gravity="start"
-                    tools:text="Rating: 4.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
+                tools:text="Rating: 4.5"
+                android:drawableLeft="@drawable/ic_action_opening_times"
+                android:drawableStart="@drawable/ic_action_star_outline"
+                android:drawablePadding="@dimen/dimen_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
         </LinearLayout>

@@ -49,26 +49,23 @@ public class LocationDetailActivity extends AppCompatActivity {
         // load the shop details
         // content title
         final TextView locationTitle = (TextView) findViewById(R.id.location_title);
-        final TextView locationDistance = (TextView) findViewById(R.id.location_distance);
 
         locationTitle.setText(location.getName());
-        locationDistance.setText(String.format("%s %s", String.valueOf(location.getDistance()), "mi"));
 
         // content detail
         TextView locationAddress = (TextView) findViewById(R.id.location_address);
-        TextView locationPostalCode = (TextView) findViewById(R.id.location_postal_code);
         TextView locationTelephone = (TextView) findViewById(R.id.location_telephone);
         TextView locationUrl = (TextView) findViewById(R.id.location_url);
         TextView locationOpeningTimes = (TextView) findViewById(R.id.location_opening_times);
         TextView locationRating = (TextView) findViewById(R.id.location_rating);
+        TextView locationDistance = (TextView) findViewById(R.id.location_distance);
 
-        locationAddress.setText(String.format("%s, %s",
-                location.getAddress().getStreet(), location.getAddress().getArea()));
-        locationPostalCode.setText(location.getAddress().getPostalCode());
+        locationAddress.setText(String.format("%s, %s, %s",
+                location.getAddress().getStreet(), location.getAddress().getArea(), location.getAddress().getPostalCode()));
         locationTelephone.setText(location.getTelephone());
         locationUrl.setText(location.getUrl());
+        locationDistance.setText(String.format("Distance: %s %s", String.valueOf(location.getDistance()), " miles"));
         locationRating.setText(String.format("Rating: %.1f", location.getRating()));
-
 
         // TODO open drop down displaying opening times
         locationOpeningTimes.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +74,12 @@ public class LocationDetailActivity extends AppCompatActivity {
                 Toast.makeText(LocationDetailActivity.this, "Display opening times", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // TODO add link to phone
+
+
+        // TODO add link to url
+
 
         // TODO display star ratings
 
@@ -118,12 +121,10 @@ public class LocationDetailActivity extends AppCompatActivity {
                 if (scrollRange + verticalOffset == 0) {
                     collapsingToolbarLayout.setTitle(location.getName());
                     locationTitle.setText("");
-                    locationDistance.setText("");
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle("");
                     locationTitle.setText(location.getName());
-                    locationDistance.setText(String.format("%s %s", String.valueOf(location.getDistance()), "mi"));
                     isShow = false;
                 }
             }
