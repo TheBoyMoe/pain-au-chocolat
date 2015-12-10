@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mapping App</string>
+    <string name="app_name">Pain au Chocolat</string>
     <string name="title_activity_loaction">LoactionActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -98,4 +98,7 @@
     <string name="url_icon">website url</string>
     <string name="opening_times_icon">Opening times icon</string>
     <string name="rating_icon">Location rating</string>
+    <string name="opening_times">Opening times:</string>
+    <string name="rating">Rating:</string>
+    <string name="location_distance">Distance to location</string>
 </resources>

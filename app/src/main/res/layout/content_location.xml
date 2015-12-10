@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.LocationDetailActivity"
     tools:showIn="@layout/activity_location">
@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/location_title"
-                tools:text="Pan du Chocolat"
+                tools:text="Pain au Chocolat"
                 android:textColor="@color/colorTextSecondary"
                 android:singleLine="true"
                 android:textSize="22sp"
@@ -40,21 +40,28 @@
                 android:layout_height="wrap_content"/>
 
 
-            <TextView
-                android:id="@+id/location_distance"
-                android:gravity="end"
-                android:textColor="@color/colorTextSecondary"
-                tools:text="0.2mi"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+            <!--<TextView-->
+                <!--android:id="@+id/location_distance"-->
+                <!--android:gravity="end"-->
+                <!--android:textColor="@color/colorTextSecondary"-->
+                <!--tools:text="0.2mi"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 
+        <!-- toolbar drop shadow-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/shadow" />
 
+
+        <!-- Location content -->
         <LinearLayout
             android:orientation="vertical"
-            android:paddingTop="@dimen/dimen_normal"
+            android:paddingTop="@dimen/dimen_large"
             android:paddingLeft="@dimen/dimen_large"
             android:paddingStart="@dimen/dimen_large"
             android:paddingRight="@dimen/dimen_large"
@@ -68,7 +75,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:src="@drawable/ic_action_location"
@@ -83,7 +90,7 @@
 
 
                     <TextView
-                        android:id="@+id/location_street"
+                        android:id="@+id/location_address"
                         android:singleLine="true"
                         tools:text="11 Borough High Street, Borough"
                         android:layout_width="match_parent"
@@ -126,6 +133,7 @@
 
             </LinearLayout>
 
+
             <!-- Location Url -->
             <LinearLayout
                 android:orientation="horizontal"
@@ -148,6 +156,27 @@
             </LinearLayout>
 
 
+            <!-- Location distance -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_action_website"
+                    android:contentDescription="@string/location_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/location_distance"
+                    tools:text="Distance: 0.2 miles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
             <!-- Location opening times-->
             <LinearLayout
                 android:orientation="horizontal"
@@ -163,31 +192,30 @@
 
                 <TextView
                     android:id="@+id/location_opening_times"
-                    tools:text="Opening times:"
+                    android:text="@string/opening_times"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
+
             <!-- Location Rating-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/app_icon_size"
-                android:paddingStart="@dimen/app_icon_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!--<ImageView-->
-                    <!--android:src="@drawable/ic_full_star"-->
-                    <!--android:contentDescription="@string/rating_icon"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"/>-->
+                <ImageView
+                    android:src="@drawable/ic_full_star"
+                    android:contentDescription="@string/rating_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/location_rating"
                     android:gravity="start"
-                    tools:text="Rating:"
+                    tools:text="Rating: 4.5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
