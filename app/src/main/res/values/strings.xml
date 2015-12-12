@@ -101,4 +101,7 @@
     <string name="opening_times">Opening times:</string>
     <string name="rating">Rating:</string>
     <string name="location_distance">Distance to location</string>
+    <string name="google_map">Map</string>
+    <string name="title_activity_location_map">LocationMapActivity</string>
+    <string name="title_activity_text">TExtActivity</string>
 </resources>

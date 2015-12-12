@@ -2,9 +2,17 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".ui.LocationDetailActivity">
+
+
+    <item
+        android:id="@+id/action_map"
+        android:orderInCategory="100"
+        android:title="@string/google_map"
+        android:icon="@android:drawable/ic_dialog_map"/>
+
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
 </menu>
