@@ -1,7 +1,7 @@
 package com.oandmdigital.mappingapp.ui;
 
 
-import android.media.midi.MidiManager;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -15,10 +15,12 @@ import com.oandmdigital.mappingapp.event.FabOnCLick;
 
 import de.greenrobot.event.EventBus;
 
-public class LocationMapFragment extends Fragment{
+public class LocationMapFragment extends Fragment {
 
     private boolean mStandardView = true;
     private View mMapView;
+
+
     public LocationMapFragment() {}
 
     public static LocationMapFragment newInstance() {
