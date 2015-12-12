@@ -47,7 +47,8 @@
 
 
     <!-- Activity content -->
-    <include layout="@layout/content_location"/>
+    <include
+        layout="@layout/content_location"/>
 
 
     <android.support.design.widget.FloatingActionButton

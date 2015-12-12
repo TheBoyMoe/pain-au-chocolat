@@ -1,6 +1,7 @@
 package com.oandmdigital.mappingapp.ui;
 
-import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -11,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oandmdigital.mappingapp.R;
 import com.oandmdigital.mappingapp.model.Shop;
@@ -27,6 +27,16 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
 
     public static final String SHOP_PARCELABLE = "shop";
     public static final String ITEM_POSITION = "position";
+    private Shop mLocation;
+    private TextView mLocationAddress;
+    private TextView mLocationTelephone;
+    private TextView mLocationUrl;
+    private TextView mLocationOpeningTimes;
+    private TextView mLocationRating;
+    private TextView mLocationDistance;
+    private View mOpeningTimes;
+    private boolean mShowTimes;
+    private FloatingActionButton mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +44,8 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_location);
 
         // fetch the shop object
-        final Shop location = getIntent().getParcelableExtra(SHOP_PARCELABLE);
+        mLocation = getIntent().getParcelableExtra(SHOP_PARCELABLE);
         int position = getIntent().getIntExtra(ITEM_POSITION, 0);
-
-
-
 
         // TODO use Glide/Picasso to load image
         // use the google street view image as a backdrop for the toolbar
@@ -47,31 +54,32 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
 
 
         // load the shop details
-        // content title
         final TextView locationTitle = (TextView) findViewById(R.id.location_title);
+        locationTitle.setText(mLocation.getName());
 
-        locationTitle.setText(location.getName());
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mLocationAddress = (TextView) findViewById(R.id.location_address);
+        mLocationAddress.setOnClickListener(this);
+        mLocationTelephone = (TextView) findViewById(R.id.location_telephone);
+        mLocationTelephone.setOnClickListener(this);
+        mLocationUrl = (TextView) findViewById(R.id.location_url);
+        mLocationUrl.setOnClickListener(this);
+        mLocationOpeningTimes = (TextView) findViewById(R.id.location_opening_times);
+        mOpeningTimes = findViewById(R.id.opening_times);
+        mOpeningTimes.setVisibility(View.GONE);
+        mLocationOpeningTimes.setOnClickListener(this);
+        mLocationRating = (TextView) findViewById(R.id.location_rating);
+        mLocationDistance = (TextView) findViewById(R.id.location_distance);
 
-        // content detail
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        TextView locationAddress = (TextView) findViewById(R.id.location_address);
-        TextView locationTelephone = (TextView) findViewById(R.id.location_telephone);
-        locationTelephone.setOnClickListener(this);
-        TextView locationUrl = (TextView) findViewById(R.id.location_url);
-        locationUrl.setOnClickListener(this);
-        TextView locationOpeningTimes = (TextView) findViewById(R.id.location_opening_times);
-        locationOpeningTimes.setOnClickListener(this);
-        TextView locationRating = (TextView) findViewById(R.id.location_rating);
-        TextView locationDistance = (TextView) findViewById(R.id.location_distance);
+        mFab.setOnClickListener(this);
+        mLocationAddress.setText(String.format("%s, %s, %s",
+                mLocation.getAddress().getStreet(), mLocation.getAddress().getArea(), mLocation.getAddress().getPostalCode()));
+        mLocationTelephone.setText(mLocation.getTelephone());
+        mLocationUrl.setText(mLocation.getUrl());
+        mLocationDistance.setText(String.format("Distance: %s %s", String.valueOf(mLocation.getDistance()), " miles"));
+        mLocationRating.setText(String.format("Rating: %.1f", mLocation.getRating()));
 
-        fab.setOnClickListener(this);
-        locationAddress.setText(String.format("%s, %s, %s",
-                location.getAddress().getStreet(), location.getAddress().getArea(), location.getAddress().getPostalCode()));
-        locationTelephone.setText(location.getTelephone());
-        locationUrl.setText(location.getUrl());
-        locationDistance.setText(String.format("Distance: %s %s", String.valueOf(location.getDistance()), " miles"));
-        locationRating.setText(String.format("Rating: %.1f", location.getRating()));
-
+        // TODO set the star rating
 
         // set the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -96,12 +104,12 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(location.getName());
+                    collapsingToolbarLayout.setTitle(mLocation.getName());
                     locationTitle.setText("");
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle("");
-                    locationTitle.setText(location.getName());
+                    locationTitle.setText(mLocation.getName());
                     isShow = false;
                 }
             }
@@ -115,16 +123,39 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
 
         switch (view.getId()) {
             case R.id.fab:
+                // TODO launch google maps
                 Snackbar.make(view, "Launch Google maps", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 break;
+
+            case R.id.location_address:
+                // TODO launch google maps
+                Snackbar.make(view, "Launch Google maps", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                break;
+
             case R.id.location_opening_times:
-                Snackbar.make(view, "Open opening times drop down", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                // TODO remove the hardcoded strings, pull data from location object
+                // show hide the opening times onClick
+                if(!mShowTimes) {
+                    mShowTimes = true;
+                    mOpeningTimes.setVisibility(View.VISIBLE);
+                }
+                else {
+                    mShowTimes = false;
+                    mOpeningTimes.setVisibility(View.GONE);
+                }
                 break;
+
             case R.id.location_telephone:
-                Snackbar.make(view, "Dial the phone number", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                // TODO check for devices with no phone, eg tablets
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+                phoneIntent.setData(Uri.parse(String.format("tel:%s", mLocation.getTelephone())));
+                startActivity(phoneIntent);
                 break;
+
             case R.id.location_url:
-                Snackbar.make(view, "Open the link in the browser", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                // TODO check program available
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mLocation.getUrl()));
+                startActivity(webIntent);
                 break;
         }
 

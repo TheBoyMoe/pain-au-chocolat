@@ -17,4 +17,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+
+    <!-- Define text size for Detail Activities content -->
+    <style name="CustomTextViewStyle" parent="android:Theme">
+        <item name="android:textViewStyle">@style/CustomContentStyle</item>
+    </style>
+
+
+    <style name="CustomContentStyle" parent="android:Widget.TextView">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
 </resources>

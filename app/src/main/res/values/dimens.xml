@@ -10,5 +10,6 @@
 
     <dimen name="app_thumbnail_size">60dp</dimen>
     <dimen name="app_icon_size">40dp</dimen>
+    <dimen name="table_padding">36dp</dimen>
 
 </resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             tools:context=".ui.LocationDetailActivity"
+             android:id="@+id/opening_times"
+             android:paddingLeft="@dimen/table_padding"
+             android:paddingStart="@dimen/table_padding"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:ignore="HardcodedText">
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Monday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Tuesday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Wednesday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Thursday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Friday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Saturday"
+            android:padding="4dp" />
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Sunday"
+            android:padding="4dp"/>
+        <TextView
+            android:layout_column="2"
+            android:text="08:00 - 17:00"
+            android:padding="4dp"/>
+
+    </TableRow>
+
+
+</TableLayout>
