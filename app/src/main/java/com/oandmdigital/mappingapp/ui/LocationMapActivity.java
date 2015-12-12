@@ -1,9 +1,14 @@
 package com.oandmdigital.mappingapp.ui;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.oandmdigital.mappingapp.R;
+import com.oandmdigital.mappingapp.event.FabOnCLick;
+
+import de.greenrobot.event.EventBus;
 
 public class LocationMapActivity extends AppCompatActivity {
 
@@ -23,14 +28,14 @@ public class LocationMapActivity extends AppCompatActivity {
                     .commit();
         }
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                EventBus.getDefault().post(new FabOnCLick(true));
+            }
+        });
     }
 
 }
