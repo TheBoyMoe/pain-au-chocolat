@@ -39,10 +39,6 @@
                 android:value="com.oandmdigital.mappingapp.ui.MainActivity"/>
         </activity>
 
-        <activity
-            android:name=".ui.LocationMapActivity"
-            android:label="@string/title_activity_location_map"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

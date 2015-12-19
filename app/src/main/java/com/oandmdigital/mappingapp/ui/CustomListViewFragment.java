@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oandmdigital.mappingapp.R;
-import com.oandmdigital.mappingapp.event.ListOnItemClick;
+import com.oandmdigital.mappingapp.event.LocationClickEvent;
 import com.oandmdigital.mappingapp.model.Shop;
 import com.oandmdigital.mappingapp.model.ShopData;
 
@@ -23,11 +23,11 @@ import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class LocationListViewFragment extends Fragment{
+public class CustomListViewFragment extends Fragment{
 
 
-    public static LocationListViewFragment newInstance() {
-        return new LocationListViewFragment();
+    public static CustomListViewFragment newInstance() {
+        return new CustomListViewFragment();
     }
 
 
@@ -46,7 +46,7 @@ public class LocationListViewFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // post the selected item to the bus, allowing the activity to deal with click event
-                EventBus.getDefault().post(new ListOnItemClick((Shop) parent.getItemAtPosition(position), position));
+                EventBus.getDefault().post(new LocationClickEvent((Shop) parent.getItemAtPosition(position), position));
             }
         });
 
