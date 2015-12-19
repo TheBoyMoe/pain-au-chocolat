@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.MapFragment;
 import com.oandmdigital.mappingapp.R;
 
-public class CustomMapFragment extends Fragment {
+public class CustomMapFragment extends MapFragment {
 
     private View mMapView;
 
@@ -22,13 +23,13 @@ public class CustomMapFragment extends Fragment {
     }
 
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mMapView = inflater.inflate(R.layout.content_location_map, container, false);
-
-        return mMapView;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        mMapView = inflater.inflate(R.layout.content_location_map, container, false);
+//
+//        return mMapView;
+//    }
 
 
 

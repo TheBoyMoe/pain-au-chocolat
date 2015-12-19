@@ -6,17 +6,51 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+
+
+    <!-- Define style for the ToolBar -->
+    <style name="ToolBarThemeOverlay">
+        <item name="android:textColorPrimary">@color/colorSecondaryText</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryText</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="ToolBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <!--<item name="android:textColor">@color/colorPrimaryText</item>-->
+        <!--<item name="android:textSize">18sp</item>-->
+    </style>
+
+
+
+
+    <!-- Define style for the TabLayout-->
+    <style name="AppTabStyle" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/colorSecondaryText</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+    </style>
+
+
+    <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <!-- textAllCaps must be set to false to display icons -->
+        <item name="textAllCaps">false</item>
+    </style>
 
     <!-- Define text size for Detail Activities content -->
     <style name="CustomTextViewStyle" parent="android:Theme">
@@ -26,7 +60,7 @@
 
     <style name="CustomContentStyle" parent="android:Widget.TextView">
         <item name="android:textSize">17sp</item>
-        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
 </resources>

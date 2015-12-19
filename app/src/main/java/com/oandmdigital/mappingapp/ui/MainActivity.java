@@ -1,28 +1,53 @@
 package com.oandmdigital.mappingapp.ui;
 
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.oandmdigital.mappingapp.R;
 import com.oandmdigital.mappingapp.event.LocationClickEvent;
+import com.oandmdigital.mappingapp.pager.CustomPagerAdapter;
 
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity {
+
+    private CoordinatorLayout mCoordinatorLayout;
+    private ViewPager mViewPager;
+    private TabLayout mPagerTabs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_container);
 
-        if(getSupportFragmentManager().findFragmentById(R.id.fragment_container) == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, CustomListViewFragment.newInstance())
-                    .commit();
+        // cache the req'd elements
+        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mPagerTabs = (TabLayout) findViewById(R.id.tab_layout);
+
+
+        // set the OnCLickListeners
+
+
+        // set the toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.app_name));
         }
+
+
+        // set the ViewPager and TabLayout
+        mViewPager.setAdapter(new CustomPagerAdapter(this, getFragmentManager()));
+        mPagerTabs.setupWithViewPager(mViewPager);
 
     }
 

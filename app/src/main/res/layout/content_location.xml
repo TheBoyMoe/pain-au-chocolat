@@ -27,7 +27,7 @@
             android:paddingBottom="@dimen/dimen_normal"
             android:background="@color/colorPrimary"
             tools:text="Pain au Chocolat"
-            android:textColor="@color/colorTextSecondary"
+            android:textColor="@color/colorSecondaryText"
             android:singleLine="true"
             android:textSize="22sp"
             android:layout_width="match_parent"

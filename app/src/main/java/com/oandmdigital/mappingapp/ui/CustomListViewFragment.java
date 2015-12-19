@@ -1,8 +1,9 @@
 package com.oandmdigital.mappingapp.ui;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class CustomListViewFragment extends Fragment{
+public class CustomListViewFragment extends Fragment {
 
 
     public static CustomListViewFragment newInstance() {
