@@ -26,8 +26,8 @@ public class Shop implements Parcelable {
                 String telephone,
                 String imageUrl,
                 double rating,
-                double longitude,
                 double latitude,
+                double longitude,
                 double distance) {
 
         mName = name;
@@ -37,8 +37,8 @@ public class Shop implements Parcelable {
         mTelephone = telephone;
         mImageUrl = imageUrl;
         mRating = rating;
-        mLongitude = longitude;
         mLatitude = latitude;
+        mLongitude = longitude;
         mDistance = distance;
     }
 

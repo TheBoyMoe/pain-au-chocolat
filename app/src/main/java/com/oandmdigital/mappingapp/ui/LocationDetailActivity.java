@@ -23,6 +23,7 @@ import com.oandmdigital.mappingapp.model.ShopData;
  * [2] http://blog.grafixartist.com/add-a-toolbar-elevation-on-pre-lollipop/
  */
 
+@SuppressWarnings("FieldCanBeLocal")
 public class LocationDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String SHOP_PARCELABLE = "shop";
