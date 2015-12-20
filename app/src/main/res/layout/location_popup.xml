@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/popup_layout"
+                android:padding="@dimen/dimen_normal"
+                android:layout_gravity="bottom"
+                android:background="@color/colorPrimaryBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/location_wrapper"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginRight="@dimen/dimen_xlarge"
+        android:layout_marginEnd="@dimen/dimen_xlarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/location_name"
+            android:singleLine="true"
+            tools:text="Mast Brothers"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/location_address"
+            android:singleLine="true"
+            tools:text="11 Havana Rd Shoreditch SE1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/location_rating"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimary"
+                tools:text="Rating 4.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/location_info"
+                android:singleLine="true"
+                android:layout_marginLeft="@dimen/dimen_normal"
+                android:layout_marginStart="@dimen/dimen_normal"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/location_popup_more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/image_directions"
+        android:contentDescription="@string/location_popup_content_description"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_action_directions"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+
+</RelativeLayout>

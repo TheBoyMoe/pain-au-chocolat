@@ -16,4 +16,6 @@
     <string name="google_map">Map</string>
     <string name="title_activity_location_map">LocationMapActivity</string>
     <string name="title_activity_text">TExtActivity</string>
+    <string name="location_popup_more_info">more info ...</string>
+    <string name="location_popup_content_description">Navigate to the selected location using Google Maps</string>
 </resources>

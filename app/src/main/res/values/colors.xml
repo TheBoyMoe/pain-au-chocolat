@@ -12,6 +12,7 @@
     <color name="colorPrimaryText">#858585</color>
     <color name="colorSecondaryText">#FFFFFF</color>
     <color name="colorTertiaryText">#CCCCCC</color>
+    <color name="colorPrimaryBackground">#FFFFFF</color>
 
 
 </resources>

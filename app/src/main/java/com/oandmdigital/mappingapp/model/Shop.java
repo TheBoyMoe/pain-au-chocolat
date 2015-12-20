@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-public class Shop {
+public class Shop implements Parcelable {
 
     private String mName;
     private Address mAddress;
@@ -90,5 +90,45 @@ public class Shop {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.mName);
+        dest.writeParcelable(this.mAddress, 0);
+        dest.writeTypedList(mOpeningTimes);
+        dest.writeString(this.mUrl);
+        dest.writeString(this.mTelephone);
+        dest.writeString(this.mImageUrl);
+        dest.writeDouble(this.mRating);
+        dest.writeDouble(this.mLongitude);
+        dest.writeDouble(this.mLatitude);
+        dest.writeDouble(this.mDistance);
+    }
+
+    protected Shop(Parcel in) {
+        this.mName = in.readString();
+        this.mAddress = in.readParcelable(Address.class.getClassLoader());
+        this.mOpeningTimes = in.createTypedArrayList(OpeningTime.CREATOR);
+        this.mUrl = in.readString();
+        this.mTelephone = in.readString();
+        this.mImageUrl = in.readString();
+        this.mRating = in.readDouble();
+        this.mLongitude = in.readDouble();
+        this.mLatitude = in.readDouble();
+        this.mDistance = in.readDouble();
+    }
+
+    public static final Parcelable.Creator<Shop> CREATOR = new Parcelable.Creator<Shop>() {
+        public Shop createFromParcel(Parcel source) {
+            return new Shop(source);
+        }
+
+        public Shop[] newArray(int size) {
+            return new Shop[size];
+        }
+    };
 }

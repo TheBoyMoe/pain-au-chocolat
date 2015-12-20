@@ -42,12 +42,13 @@ public class CustomListViewFragment extends Fragment {
         LocationArrayAdapter adapter = new LocationArrayAdapter(items);
         view.setAdapter(adapter);
 
-        // TODO setOnItemClickListener - launch the LocationActivity scroll activity
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // post the selected item to the bus, allowing the activity to deal with click event
-                EventBus.getDefault().post(new LocationClickEvent((Shop) parent.getItemAtPosition(position), position));
+                EventBus.getDefault()
+                        .post(new LocationClickEvent((Shop) parent.getItemAtPosition(position),
+                                                LocationClickEvent.LIST_ITEM_CLICK_EVENT));
             }
         });
 
