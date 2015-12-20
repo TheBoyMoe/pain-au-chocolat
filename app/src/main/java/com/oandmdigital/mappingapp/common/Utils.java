@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.Marker;
 import com.oandmdigital.mappingapp.model.Shop;
 
 public class Utils {
@@ -55,6 +57,7 @@ public class Utils {
             }
         }
     }
+
 
 
     public static void animateViewUp(final View view) {
