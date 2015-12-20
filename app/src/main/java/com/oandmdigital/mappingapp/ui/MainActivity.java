@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,29 +48,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_container);
 
-        // cache the req'd elements
-        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mPagerTabs = (TabLayout) findViewById(R.id.tab_layout);
-        mLocationPopup = findViewById(R.id.popup_layout);
-        mLocationWrapper = findViewById(R.id.location_wrapper);
-        mLocationName = (TextView) findViewById(R.id.location_name);
-        mLocationAddress = (TextView) findViewById(R.id.location_address);
-        mLocationRating = (TextView) findViewById(R.id.location_rating);
-        mImageDirections = (ImageView) findViewById(R.id.image_directions);
-
-        // set the OnCLickListeners
-        mViewPager.addOnPageChangeListener(this);
-        mImageDirections.setOnClickListener(this);
-        mLocationWrapper.setOnClickListener(this);
-
-
-        // setup the popup layout to pop in to view when req'd
-        mLocationPopup.setVisibility(View.GONE);
-        mLocationPopup.animate().translationY(300).alpha(0.0f);
-        mIsPopupVisible = false;
-
-
         // set the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,16 +55,54 @@ public class MainActivity extends AppCompatActivity implements
             getSupportActionBar().setTitle(getString(R.string.app_name));
         }
 
-
         // check that the device can display maps
         int isPlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
 
         if(isPlayServicesAvailable == ConnectionResult.SUCCESS
                 && (Utils.getVersionFromPackageManager(this) >=2)) {
 
-            // set the ViewPager and TabLayout
-            mViewPager.setAdapter(new CustomPagerAdapter(this, getFragmentManager()));
-            mPagerTabs.setupWithViewPager(mViewPager);
+
+            mViewPager = (ViewPager) findViewById(R.id.view_pager);
+            if(mViewPager == null) {
+                // device >= 600dp, display the list and map fragments simultaneously
+                if(getFragmentManager().findFragmentById(R.id.frame_left) == null) {
+                    FragmentStatePagerAdapter adapter = new CustomPagerAdapter(this, getFragmentManager());
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.frame_left, adapter.getItem(0))
+                            .add(R.id.frame_right, adapter.getItem(1))
+                            .commit();
+                }
+
+            } else {
+                // on a phone, use ViewPager and TabLayout
+                mPagerTabs = (TabLayout) findViewById(R.id.tab_layout);
+                // set the ViewPager and TabLayout
+                mViewPager.setAdapter(new CustomPagerAdapter(this, getFragmentManager()));
+                mPagerTabs.setupWithViewPager(mViewPager);
+                mViewPager.addOnPageChangeListener(this);
+
+            }
+
+
+            // cache the req'd elements
+            mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+            mLocationPopup = findViewById(R.id.popup_layout);
+            mLocationWrapper = findViewById(R.id.location_wrapper);
+            mLocationName = (TextView) findViewById(R.id.location_name);
+            mLocationAddress = (TextView) findViewById(R.id.location_address);
+            mLocationRating = (TextView) findViewById(R.id.location_rating);
+            mImageDirections = (ImageView) findViewById(R.id.image_directions);
+
+            // set the OnCLickListeners
+            mImageDirections.setOnClickListener(this);
+            mLocationWrapper.setOnClickListener(this);
+
+
+            // setup the popup layout to pop in to view when req'd
+            mLocationPopup.setVisibility(View.GONE);
+            mLocationPopup.animate().translationY(300).alpha(0.0f);
+            mIsPopupVisible = false;
+
 
         } else {
             Snackbar.make(mCoordinatorLayout,

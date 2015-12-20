@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/tool_bar"/>
+
+        <!-- toolbar drop shadow-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/shadow" />
+
+
+        <!-- content -->
+        <!-- Display the list and map fragments one above the other on devices 600dp+ -->
+        <include layout="@layout/two_frame_layout_port"/>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/location_popup"/>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
