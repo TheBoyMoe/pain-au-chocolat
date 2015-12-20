@@ -25,6 +25,7 @@ import com.oandmdigital.mappingapp.pager.CustomPagerAdapter;
 
 import de.greenrobot.event.EventBus;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
         ViewPager.OnPageChangeListener{
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         // no-op
     }
+
 
     @Override
     public void onPageSelected(int position) {

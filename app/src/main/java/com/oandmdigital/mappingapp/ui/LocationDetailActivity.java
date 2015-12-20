@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.oandmdigital.mappingapp.R;
+import com.oandmdigital.mappingapp.common.Utils;
 import com.oandmdigital.mappingapp.model.Shop;
 import com.oandmdigital.mappingapp.model.ShopData;
 
@@ -27,7 +28,6 @@ import com.oandmdigital.mappingapp.model.ShopData;
 public class LocationDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String SHOP_PARCELABLE = "shop";
-    public static final String ITEM_POSITION = "position";
     private Shop mLocation;
     private TextView mLocationAddress;
     private TextView mLocationTelephone;
@@ -121,13 +121,8 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
 
         switch (view.getId()) {
             case R.id.fab:
-                // TODO launch google maps
-                Snackbar.make(view, "Launch Google maps", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-                break;
-
             case R.id.location_address:
-                // TODO launch google maps
-                Snackbar.make(view, "Launch Google maps", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Utils.launchGoogleNavigation(this, mLocation);
                 break;
 
             case R.id.location_opening_times:
