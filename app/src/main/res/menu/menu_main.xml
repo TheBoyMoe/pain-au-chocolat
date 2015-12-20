@@ -4,8 +4,8 @@
       tools:context=".ui.LocationDetailActivity">
 
     <item
-        android:id="@+id/action_about"
+        android:id="@+id/action_license"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="@string/license_title"
         app:showAsAction="never"/>
 </menu>

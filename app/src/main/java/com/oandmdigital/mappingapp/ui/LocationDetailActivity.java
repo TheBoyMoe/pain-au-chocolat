@@ -7,7 +7,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -31,7 +30,6 @@ import com.oandmdigital.mappingapp.model.ShopData;
 public class LocationDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String SHOP_PARCELABLE = "shop";
-    private CoordinatorLayout mCoordinatorLayout;
     private Shop mLocation;
     private TextView mLocationAddress;
     private TextView mLocationTelephone;
@@ -47,7 +45,6 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
 
         // fetch the shop object
         mLocation = getIntent().getParcelableExtra(SHOP_PARCELABLE);
@@ -170,8 +167,8 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
+            case R.id.action_license:
+                startActivity(new Intent(this, LicenseActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
