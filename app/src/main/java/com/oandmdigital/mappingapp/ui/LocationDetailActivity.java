@@ -46,13 +46,11 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
 
         // fetch the shop object
         mLocation = getIntent().getParcelableExtra(SHOP_PARCELABLE);
-        int position = getIntent().getIntExtra(ITEM_POSITION, 0);
 
         // TODO use Glide/Picasso to load image
         // use the google street view image as a backdrop for the toolbar
         ImageView toolbarBackdrop = (ImageView) findViewById(R.id.backdrop);
-        toolbarBackdrop.setImageResource(ShopData.getImageDrawable(position));
-
+        toolbarBackdrop.setImageResource(ShopData.getImageDrawable(mLocation.getImage()));
 
         // load the shop details
         final TextView locationTitle = (TextView) findViewById(R.id.location_title);
@@ -80,7 +78,6 @@ public class LocationDetailActivity extends AppCompatActivity implements View.On
         mLocationDistance.setText(String.format("Distance: %s %s", String.valueOf(mLocation.getDistance()), " miles"));
         mLocationRating.setText(String.format("Rating: %.1f", mLocation.getRating()));
 
-        // TODO set the star rating
 
         // set the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

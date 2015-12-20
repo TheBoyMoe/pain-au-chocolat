@@ -1,5 +1,6 @@
 package com.oandmdigital.mappingapp.ui;
 
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -112,50 +113,81 @@ public class MainActivity extends AppCompatActivity implements
     public void onEventMainThread(LocationClickEvent event) {
 
         int eventType = event.getEventType();
-        Shop location = event.getLocation();
+        mLocation = event.getLocation();
 
         switch (eventType) {
             case LocationClickEvent.MAP_MARKER_CLICK_EVENT:
-                Toast.makeText(this, "Clicked on map marker", Toast.LENGTH_LONG).show();
+                if(!mIsPopupVisible) {
+                    Utils.animateViewUp(mLocationPopup);
+                    mIsPopupVisible = true;
+                }
+                populateLocationPopup();
                 break;
+
             case LocationClickEvent.MAP_CLICK_EVENT:
-                Toast.makeText(this, "Clicked on map", Toast.LENGTH_LONG).show();
+                if(mIsPopupVisible) {
+                    Utils.animateViewDown(mLocationPopup);
+                    mIsPopupVisible = false;
+                }
                 break;
 
             case LocationClickEvent.LIST_ITEM_CLICK_EVENT:
-                Toast.makeText(this, "Clicked on list item", Toast.LENGTH_LONG).show();
+                launchLocationDetailActivity();
                 break;
         }
 
-//        Intent intent = new Intent(this, LocationDetailActivity.class);
-//        intent.putExtra(LocationDetailActivity.SHOP_PARCELABLE, event.getShop());
-//        intent.putExtra(LocationDetailActivity.ITEM_POSITION, event.getPosition());
-//        startActivity(intent);
-
-
-
     }
 
 
+    private void launchLocationDetailActivity() {
+        Intent intent = new Intent(this, LocationDetailActivity.class);
+        intent.putExtra(LocationDetailActivity.SHOP_PARCELABLE, mLocation);
+        startActivity(intent);
+    }
 
+
+    private void populateLocationPopup() {
+        mLocationName.setText(mLocation.getName());
+        mLocationAddress.setText(String.format("%s %s",
+                mLocation.getAddress().getStreet(), mLocation.getAddress().getArea()));
+        mLocationRating.setText(String.format("Rating %.1f", mLocation.getRating()));
+    }
+
+
+    // handle clicks to the popup layout
     @Override
     public void onClick(View v) {
 
+        Utils.animateViewDown(mLocationPopup);
+        mIsPopupVisible = false;
+        int id = v.getId();
+
+        if(id == R.id.location_wrapper) {
+            launchLocationDetailActivity();
+
+        } else if(id == R.id.image_directions) {
+            Utils.launchGoogleNavigation(MainActivity.this, mLocation);
+        }
     }
+
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if(mIsPopupVisible) {
+            Utils.animateViewDown(mLocationPopup);
+            mIsPopupVisible = false;
+        }
+    }
+
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        // no-op
     }
 
     @Override
     public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+        // no-op
     }
 
 
