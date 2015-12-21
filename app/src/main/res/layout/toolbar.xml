@@ -9,4 +9,3 @@
     android:theme="@style/ToolBarThemeOverlay"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-

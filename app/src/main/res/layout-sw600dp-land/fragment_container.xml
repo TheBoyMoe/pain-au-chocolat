@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/tool_bar"/>
+        <include layout="@layout/toolbar"/>
 
         <!-- toolbar drop shadow-->
         <View
@@ -19,8 +19,6 @@
             android:layout_height="2dp"
             android:background="@drawable/shadow" />
 
-
-        <!--<include layout="@layout/view_pager"/>-->
 
         <!-- content -->
         <!-- Display the list and map fragments side by side on devices 600dp+ -->
@@ -30,7 +28,6 @@
     </LinearLayout>
 
     <include layout="@layout/location_popup"/>
-
 
 
 </android.support.design.widget.CoordinatorLayout>

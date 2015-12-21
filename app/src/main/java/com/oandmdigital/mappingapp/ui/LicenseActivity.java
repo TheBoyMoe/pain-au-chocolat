@@ -16,11 +16,6 @@ public class LicenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_license);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         TextView mLicense = (TextView) findViewById(R.id.license_terms);
         mLicense.setText(GooglePlayServicesUtil.getOpenSourceSoftwareLicenseInfo(this));
 
