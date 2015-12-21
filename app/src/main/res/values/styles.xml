@@ -22,11 +22,21 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 
-    <!-- Define style for the ToolBar -->
+    <!-- ToolBar theme -->
     <style name="ToolBarThemeOverlay">
         <!-- Set the color for the title and overflow icon -->
         <item name="android:textColorPrimary">@color/colorSecondaryText</item>
         <item name="android:textColorSecondary">@color/colorSecondaryText</item>
+    </style>
+
+
+    <!-- LocationDetailActivity style Style-->
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.DialogWhenLarge">
+        <!-- Remove the toolbar provided by the Dialog theme-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- set the color of the FAB (set to teal by the Dialog theme) -->
+        <item name="colorAccent">@color/colorPrimaryBackground</item>
     </style>
 
 

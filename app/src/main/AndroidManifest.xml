@@ -32,15 +32,26 @@
             </intent-filter>
         </activity>
 
+        <!--<activity-->
+            <!--android:name=".ui.LocationDetailActivity"-->
+            <!--android:label="@string/title_activity_loaction"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"-->
+            <!--android:parentActivityName=".ui.MainActivity">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value="com.oandmdigital.mappingapp.ui.MainActivity"/>-->
+        <!--</activity>-->
+
         <activity
             android:name=".ui.LocationDetailActivity"
             android:label="@string/title_activity_loaction"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/CustomDialogTheme"
             android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.oandmdigital.mappingapp.ui.MainActivity"/>
         </activity>
+
 
         <meta-data
             android:name="com.google.android.gms.version"
