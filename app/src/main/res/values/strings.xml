@@ -20,6 +20,6 @@
     <string name="location_popup_content_description">Navigate to the selected location using Google Maps</string>
     <string name="title_activity_about">Google Maps License</string>
     <string name="license_title">License</string>
-    <string name="google_maps_api_key">AIzaSyDw8XaAVZN_60XuIAR1JxzAZuHEhEz4ONs</string>
+    <string name="google_maps_api_key">Your Api key here</string>
 
 </resources>
